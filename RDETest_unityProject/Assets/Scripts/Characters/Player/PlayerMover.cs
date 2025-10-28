@@ -50,8 +50,6 @@ namespace RDE.Characters.PlayerCharacter
 			}
 			base.Move();
 			Vector2 movementDelta = new Vector2(_movementDirection.x, _movementDirection.y) * (_currentSpeed * Time.fixedDeltaTime);
-			Debug.Log(_currentSpeed);
-			Debug.Log(_currentSpeed * Time.fixedDeltaTime);
 			_rigidbody.MovePosition(_rigidbody.position + movementDelta);
 			CharacterMoved?.Invoke(_movementDirection);
 		}
