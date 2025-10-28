@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      wallCurveHalf_S_0: -4804539443008103972
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
