@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a62954ed09bc6f46a59f9ee9c45c859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxMovementSpeed: 7
-  _instantAcceleration: 5
+  _maxMovementSpeed: 3
+  _instantAcceleration: 2
   _accelerationCurve:
     serializedVersion: 2
     m_Curve:
