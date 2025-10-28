@@ -1,0 +1,16 @@
+{
+    "name": "XomracCore.ServiceLocator",
+    "rootNamespace": "XomracCore.Patterns.SL",
+    "references": [
+        "GUID:5715af27365213b41880da3f7854af05"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
