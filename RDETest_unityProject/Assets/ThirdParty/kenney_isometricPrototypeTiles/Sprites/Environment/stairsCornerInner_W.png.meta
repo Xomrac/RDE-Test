@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stairsCornerInner_W_0: 3716154197606711200
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
