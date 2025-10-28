@@ -34,11 +34,13 @@ package RDETest
 		
 		abstract class A2DCharacterAnimator <<M,yellow>>
 		{
-			+ PlayDirectionalAnimation(Vector2)
+			+ {abstract}PlayDirectionalAnimation(Vector2)
 		}
 		
 		abstract class A2DCharacterMover <<M,yellow>>
 		{
+			# movementDirection : Vector2
+			# previousDirection : Vector2
 			# rigidbody : Rigidbody2D
 		}
 		ACharacterMover <|- A2DCharacterMover
