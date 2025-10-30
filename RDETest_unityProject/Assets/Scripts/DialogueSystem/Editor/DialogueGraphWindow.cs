@@ -74,9 +74,18 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 			{
 				text = "Save Dialogue"
 			};
+			
+			var loadButton = new Button(() =>
+			{
+				_graphView.LoadDialogue();
+			})
+			{
+				text = "Load Dialogue"
+			};
 			toolbar.Add(addDialogueButton);
 			toolbar.Add(addStartButton);
 			toolbar.Add(saveButton);
+			toolbar.Add(loadButton);
 			rootVisualElement.Add(toolbar);
 		}
 	}

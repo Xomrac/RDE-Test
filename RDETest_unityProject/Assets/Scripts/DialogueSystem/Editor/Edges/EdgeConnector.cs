@@ -8,14 +8,14 @@
 	// makes possible to create edges by dragging from an output port to an input port
 	// shows a preview edge during the drag operation
 	// notifies a listener when the edge is dropped either on a valid input port or outside
-	public class EdgeConnector : MouseManipulator
+	public class CustomEdgeConnector : MouseManipulator
 	{
 
 		private readonly IEdgeConnectorListener _listener;
 		private Edge _edgeCandidate;
 		private GraphView _graphView;
 
-		public EdgeConnector(IEdgeConnectorListener listener)
+		public CustomEdgeConnector(IEdgeConnectorListener listener)
 		{
 			_listener = listener;
 			activators.Add(new ManipulatorActivationFilter { button = MouseButton.LeftMouse });

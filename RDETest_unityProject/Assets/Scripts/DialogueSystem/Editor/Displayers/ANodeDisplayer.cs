@@ -80,7 +80,7 @@ namespace XomracCore.DialogueSystem
 			Port outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(DialoguePort));
 			outputPort.portName = portName;
 			outputPort.userData = data;
-			outputPort.AddManipulator(new EdgeConnector(Listener));
+			outputPort.AddManipulator(new CustomEdgeConnector(Listener));
 			return outputPort;
 		}
 	}

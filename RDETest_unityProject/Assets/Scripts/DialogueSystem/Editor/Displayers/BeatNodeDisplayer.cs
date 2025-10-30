@@ -54,6 +54,7 @@ namespace XomracCore.DialogueSystem
 		{
 			_choices.Clear();
 			_choices.AddRange(newChoices);
+			UpdateOutputPorts();
 			return this;
 		}
 
@@ -106,7 +107,10 @@ namespace XomracCore.DialogueSystem
 
 		private void AddChoice(string choiceText)
 		{
-			_choices.Add(new DialogueChoice { displayedValue = choiceText });
+			_choices.Add(new DialogueChoice
+			{
+				displayedValue = choiceText
+			});
 			UpdateOutputPorts();
 		}
 

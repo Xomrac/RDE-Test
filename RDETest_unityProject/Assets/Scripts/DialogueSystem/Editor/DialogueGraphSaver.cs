@@ -60,15 +60,14 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 			var tempEdges = new List<EdgeData>();
 			foreach (Edge edge in graph.edges.Where(edge => edge.input != null && edge.output != null))
 			{
-				if (edge.output.node is not ANodeDisplayer || edge.input.node is not ANodeDisplayer toNode) continue;
+				if (edge.output.node is not ANodeDisplayer fromNode || edge.input.node is not ANodeDisplayer toNode) continue;
 	
 				string choiceValue = edge.output.userData as string;
 				Debug.Log(choiceValue);
-				string fromPortName = !string.IsNullOrEmpty(choiceValue) ? choiceValue : edge.output.portName;
-	
 				var edgeModel = new EdgeData
 				{
-					outputPortName = fromPortName,
+					outputNodeGuid = fromNode.Guid,
+					outputPortDisplayedValue = choiceValue,
 					inputNodeGuid = toNode.Guid
 				};
 				tempEdges.Add(edgeModel);
