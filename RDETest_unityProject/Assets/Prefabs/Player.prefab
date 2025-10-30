@@ -166,7 +166,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.6}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 7813401783458338037}
   - component: {fileID: 3000657368590735074}
   - component: {fileID: 8672514840816389997}
+  - component: {fileID: 6320651608379187641}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -207,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 2634425788207011967}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.582, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -317,6 +318,18 @@ MonoBehaviour:
   _orderOffset: 0
   _precision: 100
   _sortPoint: {fileID: 1323948046121353210}
+--- !u!210 &6320651608379187641
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634425788207011967}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
 --- !u!1 &7854100442024305346
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 7854100442024305346}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.619, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
