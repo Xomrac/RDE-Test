@@ -23,7 +23,7 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 
 		private void OnEnable()
 		{
-			ConstructGraphView();
+			CreateGraphView();
 			GenerateToolbar();
 		}
 
@@ -31,11 +31,10 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 		{
 			if (_graphView == null) return;
 			rootVisualElement.Remove(_graphView);
-			_graphView = null;
 			
 		}
 
-		void ConstructGraphView()
+		void CreateGraphView()
 		{
 			rootVisualElement.Clear();
 			_graphView = new DialogueGraphView(_currentDialogue);
@@ -49,7 +48,7 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 
 			var addDialogueButton = new Button(() =>
 			{
-				Debug.Log("Adding Dialogue Node");
+				_graphView.AddBeatNode(_currentDialogue);
 			})
 			{
 				text = "Add Dialogue Node"

@@ -7,6 +7,11 @@ namespace XomracCore.DialogueSystem
     {
         [SerializeField] private string _dialogueName;
         public string DialogueName => _dialogueName;
+
+        [SerializeField] private Speaker _defaultSpeaker;
+        public Speaker DefaultSpeaker => _defaultSpeaker;
+
+        
     }
 
 }

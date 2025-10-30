@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9a376fdf34f2ad438b9d923c50ea92b, type: 3}
-  m_Name: New Dialogue
+  m_Script: {fileID: 11500000, guid: 5acbfbb09d754d7daa109c15877199e0, type: 3}
+  m_Name: Speaker_NPC
   m_EditorClassIdentifier: 
-  _dialogueName: Test Dialogue
-  _defaultSpeaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+  _name: NPC
+  _portrait: {fileID: -3332227290711281450, guid: 593722040c8f0af40b2c776347c71f16, type: 3}
