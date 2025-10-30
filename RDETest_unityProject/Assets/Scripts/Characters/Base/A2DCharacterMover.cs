@@ -30,7 +30,7 @@ namespace RDE.Characters.Base
 			}
 		}
 
-		protected void ChangeDirection(Vector2 newDirection)
+		public void ChangeDirection(Vector2 newDirection)
 		{
 			_movementDirection = newDirection.normalized;
 			if (newDirection != Vector2.zero)

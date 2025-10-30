@@ -42,7 +42,7 @@ namespace RDE.Characters.PlayerCharacter
 			Stop();
 		}
 		
-		protected override void Move()
+		public override void Move()
 		{
 			if (_movementDirection == Vector2.zero)
 			{
@@ -54,7 +54,7 @@ namespace RDE.Characters.PlayerCharacter
 			CharacterMoved?.Invoke(_movementDirection);
 		}
 
-		protected override void Stop()
+		public override void Stop()
 		{
 			base.Stop();
 			ChangeDirection(Vector2.zero);
