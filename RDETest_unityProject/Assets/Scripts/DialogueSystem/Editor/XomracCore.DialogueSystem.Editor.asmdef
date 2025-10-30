@@ -1,0 +1,16 @@
+{
+    "name": "XomracCore.DialogueSystem.Editor",
+    "rootNamespace": "XomracCore.DialogueSystem",
+    "references": [
+        "GUID:649c6f3eee0908540a30266142db4169"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
