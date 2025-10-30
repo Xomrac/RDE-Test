@@ -66,8 +66,17 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 				// Disable the button after adding the start node
 				addStartButton.SetEnabled(false);
 			};
+			
+			var saveButton = new Button(() =>
+			{
+				_graphView.SaveDialogue();
+			})
+			{
+				text = "Save Dialogue"
+			};
 			toolbar.Add(addDialogueButton);
 			toolbar.Add(addStartButton);
+			toolbar.Add(saveButton);
 			rootVisualElement.Add(toolbar);
 		}
 	}

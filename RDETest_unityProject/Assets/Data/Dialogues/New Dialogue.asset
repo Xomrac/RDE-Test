@@ -14,3 +14,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueName: Test Dialogue
   _defaultSpeaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+  _nodes:
+  - rid: 5182449801144565894
+  - rid: 5182449801144565895
+  - rid: 5182449801144565896
+  _edges:
+  - rid: 5182449801144565897
+  - rid: 5182449801144565898
+  references:
+    version: 2
+    RefIds:
+    - rid: 5182449801144565894
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 9be04e1e-d9cf-48f2-ac2b-d24e6de4a538
+        position:
+          serializedVersion: 2
+          x: 517.6
+          y: 408
+          width: 302.40002
+          height: 130.4
+        beat: 
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449801144565895
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 35929b7f-336e-470b-bd72-f9187431d3bb
+        position:
+          serializedVersion: 2
+          x: 517.6
+          y: 559.19995
+          width: 302.40002
+          height: 130.40002
+        beat: 
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449801144565896
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 85359ba7-8731-4718-8e44-ef332ab9a196
+        position:
+          serializedVersion: 2
+          x: 64.8
+          y: 408
+          width: 302.40002
+          height: 164.00003
+        beat: 
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices:
+        - portGuid: 77ba2172-cbec-4b9f-9cf3-7a3d1d729b24
+          connectedNodeGuid: 
+          displayedValue: Choice 1
+        - portGuid: a2ba96a9-3b49-4547-80a9-991fa3ea5219
+          connectedNodeGuid: 
+          displayedValue: Choice 2
+    - rid: 5182449801144565897
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputPortName: Choice 1
+        inputNodeGuid: 9be04e1e-d9cf-48f2-ac2b-d24e6de4a538
+    - rid: 5182449801144565898
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputPortName: Choice 2
+        inputNodeGuid: 35929b7f-336e-470b-bd72-f9187431d3bb

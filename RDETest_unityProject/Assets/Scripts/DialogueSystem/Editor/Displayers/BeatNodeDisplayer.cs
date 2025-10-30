@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.UIElements;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿
 
 namespace XomracCore.DialogueSystem
 {
 
-	[Serializable]
-	public class DialogueChoice
-	{
-		public string guid = Guid.NewGuid().ToString();
-		public string displayedValue = "Choice";
-	}
+	using System.Collections.Generic;
+	using UnityEditor.Experimental.GraphView;
+	using UnityEditor.UIElements;
+	using UnityEngine.UIElements;
+	using XomracCore.DialogueSystem.SerializedData;
 
 	public class BeatNodeDisplayer : ANodeDisplayer
 	{
 		private TextField _beatField;
 		private ObjectField _speaker;
 		private readonly List<DialogueChoice> _choices = new();
+		public List<DialogueChoice> Choices => _choices;
 
 		private Port _defaultOutputPort;
 		public Speaker Speaker => _speaker.value as Speaker;
@@ -117,7 +112,7 @@ namespace XomracCore.DialogueSystem
 
 		private void RemoveChoice(string guid)
 		{
-			int choiceIndex = _choices.FindIndex(choice => choice.guid == guid);
+			int choiceIndex = _choices.FindIndex(choice => choice.portGuid == guid);
 			if (choiceIndex >= 0)
 			{
 				_choices.RemoveAt(choiceIndex);
@@ -149,7 +144,7 @@ namespace XomracCore.DialogueSystem
 
 				portContainer.Add(CreateRemoveChoiceButton(choice));
 				portContainer.Add(CreateChoiceField(choice));
-				portContainer.Add(CreateOutputPort("", choice.guid));
+				portContainer.Add(CreateOutputPort("", choice.displayedValue));
 				outputContainer.Add(portContainer);
 			}
 
@@ -159,7 +154,7 @@ namespace XomracCore.DialogueSystem
 
 		private Button CreateRemoveChoiceButton(DialogueChoice choice)
 		{
-			var removeButton = new Button(() => RemoveChoice(choice.guid))
+			var removeButton = new Button(() => RemoveChoice(choice.portGuid))
 			{
 				text = "–",
 				style =

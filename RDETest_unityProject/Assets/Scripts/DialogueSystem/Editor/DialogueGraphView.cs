@@ -75,6 +75,11 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 			Insert(0, grid);
 			grid.StretchToParentSize();
 		}
+
+		public void SaveDialogue()
+		{
+			this.Save();
+		}
 	}
 
 }
