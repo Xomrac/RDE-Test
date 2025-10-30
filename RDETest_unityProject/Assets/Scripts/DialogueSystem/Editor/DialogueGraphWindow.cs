@@ -56,12 +56,16 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 		
 			var addStartButton = new Button(() =>
 			{
-				Debug.Log("Adding Start Node");
+				_graphView.AddStartNode();
 			})
 			{
 				text = "Add Start Node"
 			};
-
+			addStartButton.clicked += () =>
+			{
+				// Disable the button after adding the start node
+				addStartButton.SetEnabled(false);
+			};
 			toolbar.Add(addDialogueButton);
 			toolbar.Add(addStartButton);
 			rootVisualElement.Add(toolbar);

@@ -8,6 +8,8 @@
 	{
 		private readonly Dialogue _currentDialogue;
 		public Dialogue CurrentDialogue => _currentDialogue;
+		
+		private bool _hasStartNode = false;
 
 		public DialogueGraphView(Dialogue data)
 		{
@@ -25,6 +27,17 @@
 				.WithView(this);
 			(node as BeatNodeDisplayer).WithSpeaker(dialogue.DefaultSpeaker);
 			AddElement(node);
+		}
+		
+		public void AddStartNode()
+		{
+			if (_hasStartNode) return;
+			ANodeDisplayer node = new StartNodeDisplayer()
+				.WithTitle("Start Node")
+				.WithGuid(System.Guid.NewGuid().ToString())
+				.WithView(this);
+			AddElement(node);
+			_hasStartNode = true;
 		}
 
 		private void SetupInteractions()
