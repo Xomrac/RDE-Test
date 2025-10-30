@@ -1,10 +1,11 @@
+using UnityEngine.UIElements;
+
 namespace XomracCore.DialogueSystem
 {
 
 	using UnityEngine;
 	using DialogueSystem;
 	using UnityEditor.Experimental.GraphView;
-	using UnityEngine.UIElements;
 
 	public class ANodeDisplayer : Node
 	{
@@ -19,6 +20,9 @@ namespace XomracCore.DialogueSystem
 
 		private DialogueGraphView _view;
 		public DialogueGraphView View => _view;
+		
+		private readonly EdgeConnectorListener _listener = new();
+		public EdgeConnectorListener Listener => _listener;
 
 		#region Builder Methods
 			
@@ -67,15 +71,16 @@ namespace XomracCore.DialogueSystem
 			
 		protected virtual Port CreateInputPort(string portName = "Input")
 		{
-			var inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(object));
+			var inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(DialoguePort));
 			inputPort.portName = portName;
 			return inputPort;
 		}
 		protected virtual Port CreateOutputPort(string portName = "Next", object data = null)
 		{
-			Port outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(object));
+			Port outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(DialoguePort));
 			outputPort.portName = portName;
 			outputPort.userData = data;
+			outputPort.AddManipulator(new EdgeConnector(Listener));
 			return outputPort;
 		}
 	}

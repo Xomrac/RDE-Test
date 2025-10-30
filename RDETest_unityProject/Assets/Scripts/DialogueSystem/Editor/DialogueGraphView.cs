@@ -1,4 +1,6 @@
-﻿namespace XomracCore.DialogueSystem.DialogueSystem
+﻿using System.Collections.Generic;
+
+namespace XomracCore.DialogueSystem.DialogueSystem
 {
 
 	using UnityEngine.UIElements;
@@ -17,6 +19,25 @@
 			style.flexGrow = 1;
 			SetupInteractions();
 			AddGrid();
+		}
+		
+		// automatically called by Unity to determine which ports can connect when you create/drag a connection
+		public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter _)
+		{
+			var compatiblePorts = new List<Port>();
+
+			ports.ForEach(port =>
+			{
+				if (startPort != port && startPort.node != port.node)
+				{
+					if (startPort.direction != port.direction)
+					{
+						compatiblePorts.Add(port);
+					}
+				}
+			});
+
+			return compatiblePorts;
 		}
 		
 		public void AddBeatNode(Dialogue dialogue)
