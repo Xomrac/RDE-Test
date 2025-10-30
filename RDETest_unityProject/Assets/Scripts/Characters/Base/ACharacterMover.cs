@@ -14,7 +14,10 @@
 		[SerializeField] protected AnimationCurve _accelerationCurve = AnimationCurve.Linear(0, 0, 1, 1);
 		public AnimationCurve AccelerationCurve => _accelerationCurve;
 		
+		public float SpeedProportion => _currentSpeed / _maxMovementSpeed;
+		
 		protected float _currentSpeed;
+		public float CurrentSpeed => _currentSpeed;
 		private float _movementTime;
 		private bool _isMoving;
 		public bool IsMoving => _isMoving;
@@ -41,12 +44,12 @@
 			}
 		}
 
-		protected virtual void Move()
+		public virtual void Move()
 		{
 			_isMoving = true;
 		}
 
-		protected virtual void Stop()
+		public virtual void Stop()
 		{
 			_isMoving = false;
 			_currentSpeed = 0;

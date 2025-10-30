@@ -1,9 +1,10 @@
 {
     "name": "RDETest.Characters",
-    "rootNamespace": "RDETest",
+    "rootNamespace": "RDETest.Characters",
     "references": [
         "GUID:d11b5118e2991ae4ba5906789b4394e2",
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:0934950e04b10e64eb3ced05ca275b21"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
