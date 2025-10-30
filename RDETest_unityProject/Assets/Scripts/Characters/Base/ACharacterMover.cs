@@ -7,15 +7,15 @@
 	{
 		[SerializeField] protected float _maxMovementSpeed = 10f;
 		public float MaxMovementSpeed => _maxMovementSpeed;
-		
+
 		[SerializeField] protected float _instantAcceleration = 5f;
 		public float InstantAcceleration => _instantAcceleration;
 
 		[SerializeField] protected AnimationCurve _accelerationCurve = AnimationCurve.Linear(0, 0, 1, 1);
 		public AnimationCurve AccelerationCurve => _accelerationCurve;
-		
+
 		public float SpeedProportion => _currentSpeed / _maxMovementSpeed;
-		
+
 		protected float _currentSpeed;
 		public float CurrentSpeed => _currentSpeed;
 		private float _movementTime;

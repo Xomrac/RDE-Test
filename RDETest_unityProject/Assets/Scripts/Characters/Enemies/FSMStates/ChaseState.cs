@@ -21,6 +21,7 @@ namespace RDE.Characters.Enemies.FMSStates
 		public void Enter()
 		{
 			_enemy.ChangeColor(Color.red);
+			_enemyMover.SetTarget(_player.transform);
 		}
 
 		public void Update()

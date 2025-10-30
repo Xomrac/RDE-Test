@@ -1,33 +1,47 @@
 ﻿using RDE.Characters.Base;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace RDETest.Characters.Characters.Enemies
 {
 
 	public class EnemyMover : A2DCharacterMover
 	{
-
-		[SerializeField] private Transform _target;
-
+		[SerializeField] private NavMeshAgent _agent;
 		
+		private Transform _target;
+
+		protected override void Start()
+		{
+			base.Start();
+			_agent.updateRotation = false;
+			_agent.updateUpAxis = false;
+		}
+		
+		public void SetTarget(Transform target)
+		{
+			_target = target;
+		}
+
 		public override void Move()
 		{
-			if (_movementDirection == Vector2.zero)
+			if (_movementDirection == Vector2.zero || _target == null)
 			{
 				return;
 			}
 			base.Move();
-			UpdateMovementSpeed(Time.fixedDeltaTime);
-			Vector2 movementDelta = new Vector2(_movementDirection.x, _movementDirection.y) * (_currentSpeed * Time.fixedDeltaTime);
-			_rigidbody.MovePosition(_rigidbody.position + movementDelta);
+			_currentSpeed = _agent.speed;
+			_agent.isStopped = false;
+			_agent.SetDestination(_target.position);
 			CharacterMoved?.Invoke(_movementDirection);
 		}
 		
 		public override void Stop()
 		{
 			base.Stop();
+			_currentSpeed = 0f;
 			ChangeDirection(Vector2.zero);
-			_rigidbody.linearVelocity = Vector3.zero;
+			_agent.isStopped = true;
 			CharacterStopped?.Invoke(_previousDirection);
 		}
 	}

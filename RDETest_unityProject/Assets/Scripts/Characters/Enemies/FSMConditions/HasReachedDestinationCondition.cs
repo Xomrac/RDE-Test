@@ -21,7 +21,7 @@ namespace RDETest.Characters.Characters.Enemies.FSMConditions
 			// Use squared distance to avoid the expensive sqrt.
 			// range is also squared for comparison.
 			float rangeSquared = _tolerance * _tolerance;
-			Vector3 distance = _enemy.PatrolDestination - _enemy.transform.position;
+			Vector3 distance = _enemy.PatrolDestination.position - _enemy.transform.position;
 			return distance.sqrMagnitude <= rangeSquared;
 		}
 	}

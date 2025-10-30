@@ -20,8 +20,6 @@ namespace RDETest.Characters.Characters.Enemies
 		[SerializeField] private LayerMask _layersToCheck;
 		[SerializeField] private SpriteRenderer _renderer;
 
-		
-
 		public void ChangeColor(Color newColor)
 		{
 			if (_renderer != null)
@@ -29,15 +27,13 @@ namespace RDETest.Characters.Characters.Enemies
 				_renderer.color = newColor;
 			}
 		}
-		
+
 		private FiniteStateMachine _fsm;
 		private Player _player;
-		private Vector3 _patrolDestination;
-		public Vector3 PatrolDestination => _patrolDestination;
+		private Transform _patrolDestination;
+		public Transform PatrolDestination => _patrolDestination;
 		private Transform[] _lastWaypoints = new Transform[2];
 		private List<Transform> _availableWaypoints = new();
-		
-		
 
 		private void Start()
 		{
@@ -57,7 +53,7 @@ namespace RDETest.Characters.Characters.Enemies
 		{
 			if (_waypoints.Length == 0) return;
 			var randomIndex = UnityEngine.Random.Range(0, _availableWaypoints.Count);
-			_patrolDestination = _availableWaypoints[randomIndex].position;
+			_patrolDestination = _availableWaypoints[randomIndex];
 			var temp = _lastWaypoints[1];
 			_lastWaypoints[1] = _lastWaypoints[0];
 			_lastWaypoints[0] = _availableWaypoints[randomIndex];
@@ -90,7 +86,7 @@ namespace RDETest.Characters.Characters.Enemies
 			_fsm.Transitions.AddTransition(chaseState, attackState, isNearPlayerCondition);
 
 			_fsm.Transitions.AddTransition(attackState, chaseState, new IsFarFromPlayerCondition(_attackRange, _player.transform, transform));
-			
+
 			_fsm.ChangeState(patrolState);
 		}
 
@@ -98,6 +94,7 @@ namespace RDETest.Characters.Characters.Enemies
 		{
 			_fsm.Update();
 		}
+
 		private void FixedUpdate()
 		{
 			_fsm.FixedUpdate();
@@ -111,7 +108,11 @@ namespace RDETest.Characters.Characters.Enemies
 			Gizmos.color = Color.red;
 			Gizmos.DrawWireSphere(transform.position, _attackRange);
 			Gizmos.color = Color.cyan;
-			Gizmos.DrawSphere(_patrolDestination, 0.1f);
+			// sanity check for null because it could throw errors in edit mode when exiting play mode
+			if (_patrolDestination != null)
+			{
+				Gizmos.DrawSphere(_patrolDestination.position, 0.1f);
+			}
 		}
 #endif
 

@@ -18,19 +18,22 @@ namespace RDE.Characters.Enemies.FMSStates
 		public void Enter()
 		{
 			_enemy.ChangeColor(Color.yellow);
+			_enemyMover.SetTarget(_enemy.PatrolDestination);
 		}
 
 		public void Update()
 		{
+			if (_enemyMover == null) return;
+			
+			var movementDirection = _enemy.PatrolDestination.position - _enemy.transform.position;
+			_enemyMover.ChangeDirection(movementDirection.normalized);
+			_enemyMover.Move();
 			
 		}
 
 		public void FixedUpdate()
 		{
-			if (_enemyMover == null) return;
-			var movementDirection = _enemy.PatrolDestination - _enemy.transform.position;
-			_enemyMover.ChangeDirection(movementDirection.normalized);
-			_enemyMover.Move();
+			
 		}
 
 		public void Exit()
