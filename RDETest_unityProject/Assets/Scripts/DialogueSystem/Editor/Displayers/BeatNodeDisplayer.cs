@@ -132,7 +132,7 @@ namespace XomracCore.DialogueSystem
 
 		private Label CreateBeatField()
 		{
-			var label = new Label("Dialogue Text:")
+			var label = new Label("Beat:")
 			{
 				style =
 				{

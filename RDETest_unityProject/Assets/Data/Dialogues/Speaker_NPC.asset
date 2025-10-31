@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5acbfbb09d754d7daa109c15877199e0, type: 3}
   m_Name: Speaker_NPC
   m_EditorClassIdentifier: 
-  _name: NPC
+  _name: The NPC
   _portrait: {fileID: -2508321389420471057, guid: c6557ad901b21c64fbbd063d45a91010, type: 3}

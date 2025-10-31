@@ -1,0 +1,416 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a376fdf34f2ad438b9d923c50ea92b, type: 3}
+  m_Name: TestDialogue
+  m_EditorClassIdentifier: 
+  _dialogueName: Test Dialogue
+  _defaultSpeaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+  _nodes:
+  - rid: 5182449823217615573
+  - rid: 5182449823217615574
+  - rid: 5182449823217615575
+  - rid: 5182449823217615576
+  - rid: 5182449823217615577
+  - rid: 5182449823217615578
+  - rid: 5182449823217615579
+  - rid: 5182449823217615580
+  - rid: 5182449823217615581
+  - rid: 5182449823217615582
+  - rid: 5182449823217615583
+  - rid: 5182449823217615584
+  - rid: 5182449823217615585
+  - rid: 5182449823217615586
+  - rid: 5182449823217615587
+  - rid: 5182449823217615588
+  - rid: 5182449823217615589
+  - rid: 5182449823217615590
+  _edges:
+  - rid: 5182449823217615591
+  - rid: 5182449823217615592
+  - rid: 5182449823217615593
+  - rid: 5182449823217615594
+  - rid: 5182449823217615595
+  - rid: 5182449823217615596
+  - rid: 5182449823217615597
+  - rid: 5182449823217615598
+  - rid: 5182449823217615599
+  - rid: 5182449823217615600
+  - rid: 5182449823217615601
+  - rid: 5182449823217615602
+  - rid: 5182449823217615603
+  - rid: 5182449823217615604
+  - rid: 5182449823217615605
+  - rid: 5182449823217615606
+  - rid: 5182449823217615607
+  - rid: 5182449823217615608
+  - rid: 5182449823217615609
+  references:
+    version: 2
+    RefIds:
+    - rid: 5182449823217615573
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 8904555e-49c0-43f2-a550-1a0a9de1bfda
+        position:
+          serializedVersion: 2
+          x: 220.8
+          y: 6.3999996
+          width: 311.2
+          height: 320
+        beat: "Oh\u2026 so this is the dialogue system test?"
+        speaker: {fileID: 11400000, guid: b1d44ba8dd50ba247979472b64f0bf8b, type: 2}
+        choices: []
+    - rid: 5182449823217615574
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 78b04478-d81c-427b-bb79-6eaaf558801c
+        position:
+          serializedVersion: 2
+          x: 570.4
+          y: 11.199999
+          width: 302.39996
+          height: 315.19998
+        beat: Yep! Pretty cool don't you think?
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615575
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 328785f6-036b-428c-87d5-ada818321858
+        position:
+          serializedVersion: 2
+          x: 1477.6
+          y: 11.199999
+          width: 509.59998
+          height: 315.19998
+        beat: Cause <i>we are</i> a different part of the demo, we only exist to
+          test the dialogue system
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615576
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 632f5f17-1e10-43a7-95ba-fbf2429a2d99
+        position:
+          serializedVersion: 2
+          x: 912
+          y: 6.3999996
+          width: 502.40002
+          height: 320
+        beat: It' cool indeed, except... why do we look like we're from a completely
+          different tech demo?
+        speaker: {fileID: 11400000, guid: b1d44ba8dd50ba247979472b64f0bf8b, type: 2}
+        choices: []
+    - rid: 5182449823217615577
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 2c5f78ae-2014-43d0-99ed-d4910efd0fbc
+        position:
+          serializedVersion: 2
+          x: 2038.4
+          y: 6.3999996
+          width: 318.40002
+          height: 320
+        beat: Guess i'll be a generic free sprite called "Portrai_player"
+        speaker: {fileID: 11400000, guid: b1d44ba8dd50ba247979472b64f0bf8b, type: 2}
+        choices: []
+    - rid: 5182449823217615578
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 7dc6bce0-eff4-4753-b51e-577f1c0f1533
+        position:
+          serializedVersion: 2
+          x: 2430.4
+          y: 11.199999
+          width: 302.40015
+          height: 315.19998
+        beat: Nothing to be ashamed of my friend
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615579
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 9406aad4-2d37-4a6d-bfb7-6b7314400985
+        position:
+          serializedVersion: 2
+          x: 2792.8
+          y: 11.199999
+          width: 309.59985
+          height: 315.19998
+        beat: ok now let's test the branching feature. Are you ready
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615580
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: f310c935-bd25-4b3c-851f-5f4ff85e9b8c
+        position:
+          serializedVersion: 2
+          x: 3210.4
+          y: 11.199999
+          width: 311.2002
+          height: 382.4
+        beat: 
+        speaker: {fileID: 11400000, guid: b1d44ba8dd50ba247979472b64f0bf8b, type: 2}
+        choices:
+        - portGuid: c697b183-c17d-4d08-9439-45081a0d64c6
+          displayedValue: Sure let's do it
+        - portGuid: 07573aee-9f6c-427f-917c-0f63dec1f9e3
+          displayedValue: I'm not sure about that
+        - portGuid: 8ef7b15b-4972-44a1-9a04-bbc2b6b85333
+          displayedValue: Can you repeat please?
+    - rid: 5182449823217615581
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 8a814d61-b556-48ef-93ba-fc87273b393c
+        position:
+          serializedVersion: 2
+          x: 3650.4
+          y: -179.2
+          width: 463.2002
+          height: 315.2
+        beat: Okay, so now we say something slightly different based on what the
+          player picked.
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615582
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 8e169bf6-9a4e-416d-8657-bf9be7ec92c2
+        position:
+          serializedVersion: 2
+          x: 4142.4
+          y: -184
+          width: 311.2002
+          height: 320
+        beat: "That\u2019s\u2026 literally what branching is."
+        speaker: {fileID: 11400000, guid: b1d44ba8dd50ba247979472b64f0bf8b, type: 2}
+        choices: []
+    - rid: 5182449823217615583
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 140acbd4-283b-43ef-a97c-982fa9227655
+        position:
+          serializedVersion: 2
+          x: 4480.8
+          y: -179.2
+          width: 402.4004
+          height: 315.2
+        beat: I know, but Marco said to sound impressed. <i>("Wow, branching!")</i>
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615584
+      type: {class: NodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: d0d34ff2-26ff-4348-a0bb-29c803efed7b
+        position:
+          serializedVersion: 2
+          x: 50.4
+          y: 194.40001
+          width: 109.6
+          height: 76.8
+    - rid: 5182449823217615585
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 9f6eca4a-4d24-4de7-bfb4-7058c92a393b
+        position:
+          serializedVersion: 2
+          x: 3650.4
+          y: 272.80002
+          width: 613.6001
+          height: 315.2
+        beat: "Agreed. It's probably broken anyways. We don\u2019t even have proper
+          portraits, just poorly upscaled 32x32 sprites."
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615586
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: bb057a40-605f-4f81-a351-d539b40a4d47
+        position:
+          serializedVersion: 2
+          x: 4373.6
+          y: 272.80002
+          width: 350.3999
+          height: 320
+        beat: At least the text animates nicely. That counts as polish, right?
+        speaker: {fileID: 11400000, guid: b1d44ba8dd50ba247979472b64f0bf8b, type: 2}
+        choices: []
+    - rid: 5182449823217615587
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: cb9c18e0-94c4-4578-a065-aaedf37c9649
+        position:
+          serializedVersion: 2
+          x: 4740.8
+          y: 277.6
+          width: 417.6001
+          height: 315.2
+        beat: "Sure. \u201CStylized minimalism.\u201D What could we expect from a
+          tool developer?!"
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615588
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 6462d38b-9fe6-48f4-8f2a-40f2107ab5a4
+        position:
+          serializedVersion: 2
+          x: 5208.8
+          y: -179.2
+          width: 418.4004
+          height: 315.2
+        beat: Anyway, soon i'll start to randomly follow you around by resuming my
+          FSM
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615589
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 3b9902af-ffa6-446f-85ed-04466f370f29
+        position:
+          serializedVersion: 2
+          x: 5709.6
+          y: -179.2
+          width: 472.7998
+          height: 315.2
+        beat: I'll give you a couple of seconds to run away. It was nice testing
+          this feature with you
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449823217615590
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 271d0c3f-1c39-4685-b42e-7138bb74de92
+        position:
+          serializedVersion: 2
+          x: 6236
+          y: -184
+          width: 311.2002
+          height: 320
+        beat: Goodbye <i>The NPC</i>
+        speaker: {fileID: 11400000, guid: b1d44ba8dd50ba247979472b64f0bf8b, type: 2}
+        choices: []
+    - rid: 5182449823217615591
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: d0d34ff2-26ff-4348-a0bb-29c803efed7b
+        outputPortDisplayedValue: 
+        inputNodeGuid: 8904555e-49c0-43f2-a550-1a0a9de1bfda
+    - rid: 5182449823217615592
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 8904555e-49c0-43f2-a550-1a0a9de1bfda
+        outputPortDisplayedValue: 
+        inputNodeGuid: 78b04478-d81c-427b-bb79-6eaaf558801c
+    - rid: 5182449823217615593
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 78b04478-d81c-427b-bb79-6eaaf558801c
+        outputPortDisplayedValue: 
+        inputNodeGuid: 632f5f17-1e10-43a7-95ba-fbf2429a2d99
+    - rid: 5182449823217615594
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 632f5f17-1e10-43a7-95ba-fbf2429a2d99
+        outputPortDisplayedValue: 
+        inputNodeGuid: 328785f6-036b-428c-87d5-ada818321858
+    - rid: 5182449823217615595
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 328785f6-036b-428c-87d5-ada818321858
+        outputPortDisplayedValue: 
+        inputNodeGuid: 2c5f78ae-2014-43d0-99ed-d4910efd0fbc
+    - rid: 5182449823217615596
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 2c5f78ae-2014-43d0-99ed-d4910efd0fbc
+        outputPortDisplayedValue: 
+        inputNodeGuid: 7dc6bce0-eff4-4753-b51e-577f1c0f1533
+    - rid: 5182449823217615597
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 7dc6bce0-eff4-4753-b51e-577f1c0f1533
+        outputPortDisplayedValue: 
+        inputNodeGuid: 9406aad4-2d37-4a6d-bfb7-6b7314400985
+    - rid: 5182449823217615598
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 9406aad4-2d37-4a6d-bfb7-6b7314400985
+        outputPortDisplayedValue: 
+        inputNodeGuid: f310c935-bd25-4b3c-851f-5f4ff85e9b8c
+    - rid: 5182449823217615599
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 8a814d61-b556-48ef-93ba-fc87273b393c
+        outputPortDisplayedValue: 
+        inputNodeGuid: 8e169bf6-9a4e-416d-8657-bf9be7ec92c2
+    - rid: 5182449823217615600
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 8e169bf6-9a4e-416d-8657-bf9be7ec92c2
+        outputPortDisplayedValue: 
+        inputNodeGuid: 140acbd4-283b-43ef-a97c-982fa9227655
+    - rid: 5182449823217615601
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 9f6eca4a-4d24-4de7-bfb4-7058c92a393b
+        outputPortDisplayedValue: 
+        inputNodeGuid: bb057a40-605f-4f81-a351-d539b40a4d47
+    - rid: 5182449823217615602
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: bb057a40-605f-4f81-a351-d539b40a4d47
+        outputPortDisplayedValue: 
+        inputNodeGuid: cb9c18e0-94c4-4578-a065-aaedf37c9649
+    - rid: 5182449823217615603
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: cb9c18e0-94c4-4578-a065-aaedf37c9649
+        outputPortDisplayedValue: 
+        inputNodeGuid: 6462d38b-9fe6-48f4-8f2a-40f2107ab5a4
+    - rid: 5182449823217615604
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: f310c935-bd25-4b3c-851f-5f4ff85e9b8c
+        outputPortDisplayedValue: Sure let's do it
+        inputNodeGuid: 8a814d61-b556-48ef-93ba-fc87273b393c
+    - rid: 5182449823217615605
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: f310c935-bd25-4b3c-851f-5f4ff85e9b8c
+        outputPortDisplayedValue: I'm not sure about that
+        inputNodeGuid: 9f6eca4a-4d24-4de7-bfb4-7058c92a393b
+    - rid: 5182449823217615606
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: f310c935-bd25-4b3c-851f-5f4ff85e9b8c
+        outputPortDisplayedValue: Can you repeat please?
+        inputNodeGuid: 9406aad4-2d37-4a6d-bfb7-6b7314400985
+    - rid: 5182449823217615607
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 6462d38b-9fe6-48f4-8f2a-40f2107ab5a4
+        outputPortDisplayedValue: 
+        inputNodeGuid: 3b9902af-ffa6-446f-85ed-04466f370f29
+    - rid: 5182449823217615608
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 140acbd4-283b-43ef-a97c-982fa9227655
+        outputPortDisplayedValue: 
+        inputNodeGuid: 6462d38b-9fe6-48f4-8f2a-40f2107ab5a4
+    - rid: 5182449823217615609
+      type: {class: EdgeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        outputNodeGuid: 3b9902af-ffa6-446f-85ed-04466f370f29
+        outputPortDisplayedValue: 
+        inputNodeGuid: 271d0c3f-1c39-4685-b42e-7138bb74de92
