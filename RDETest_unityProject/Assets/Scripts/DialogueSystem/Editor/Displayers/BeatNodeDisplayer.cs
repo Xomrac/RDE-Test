@@ -151,6 +151,7 @@ namespace XomracCore.DialogueSystem
 					marginBottom = 0
 				}
 			};
+			_beatField.RegisterCallback<FocusOutEvent>(_ => View.SaveGraph());
 			return label;
 		}
 
@@ -161,7 +162,11 @@ namespace XomracCore.DialogueSystem
 				objectType = typeof(Speaker),
 				allowSceneObjects = false
 			};
-			_speaker.RegisterValueChangedCallback(_ => UpdatePortrait());
+			_speaker.RegisterValueChangedCallback(_ =>
+			{
+				View?.SaveGraph();
+				UpdatePortrait();
+			});
 		}
 
 		private void AddChoice(string choiceText)
@@ -171,6 +176,7 @@ namespace XomracCore.DialogueSystem
 				displayedValue = choiceText
 			});
 			UpdateOutputPorts();
+			View?.SaveGraph();
 		}
 
 		private void RemoveChoice(string guid)
@@ -180,6 +186,7 @@ namespace XomracCore.DialogueSystem
 			{
 				_choices.RemoveAt(choiceIndex);
 				UpdateOutputPorts();
+				View?.SaveGraph();
 			}
 		}
 
@@ -242,7 +249,11 @@ namespace XomracCore.DialogueSystem
 					marginLeft = 6
 				}
 			};
-			choiceField.RegisterValueChangedCallback(evt => { choice.displayedValue = evt.newValue; });
+			choiceField.RegisterValueChangedCallback(evt =>
+			{
+				choice.displayedValue = evt.newValue;
+				View?.SaveGraph();
+			});
 			return choiceField;
 		}
 

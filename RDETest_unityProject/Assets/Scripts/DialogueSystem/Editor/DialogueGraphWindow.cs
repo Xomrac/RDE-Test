@@ -24,7 +24,6 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 		private void OnEnable()
 		{
 			CreateGraphView();
-			GenerateToolbar();
 		}
 
 		private void OnDisable()
@@ -39,55 +38,11 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 			rootVisualElement.Clear();
 			_graphView = new DialogueGraphView(_currentDialogue);
 			_graphView.StretchToParentSize();
+			_graphView.SetupContextMenu(this);
 			rootVisualElement.Add(_graphView);
 		}
 
-		void GenerateToolbar()
-		{
-			var toolbar = new Toolbar();
-
-			var addDialogueButton = new Button(() =>
-			{
-				_graphView.AddBeatNode(_currentDialogue);
-			})
-			{
-				text = "Add Dialogue Node"
-			};
 		
-			var addStartButton = new Button(() =>
-			{
-				_graphView.AddStartNode();
-			})
-			{
-				text = "Add Start Node"
-			};
-			addStartButton.clicked += () =>
-			{
-				// Disable the button after adding the start node
-				addStartButton.SetEnabled(false);
-			};
-			
-			var saveButton = new Button(() =>
-			{
-				_graphView.SaveDialogue();
-			})
-			{
-				text = "Save Dialogue"
-			};
-			
-			var loadButton = new Button(() =>
-			{
-				_graphView.LoadDialogue();
-			})
-			{
-				text = "Load Dialogue"
-			};
-			toolbar.Add(addDialogueButton);
-			toolbar.Add(addStartButton);
-			toolbar.Add(saveButton);
-			toolbar.Add(loadButton);
-			rootVisualElement.Add(toolbar);
-		}
 	}
 
 }

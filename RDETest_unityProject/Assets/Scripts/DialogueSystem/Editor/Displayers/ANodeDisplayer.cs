@@ -21,9 +21,6 @@ namespace XomracCore.DialogueSystem
 		private DialogueGraphView _view;
 		public DialogueGraphView View => _view;
 		
-		private readonly EdgeConnectorListener _listener = new();
-		public EdgeConnectorListener Listener => _listener;
-
 		#region Builder Methods
 			
 		public ANodeDisplayer()
@@ -80,7 +77,6 @@ namespace XomracCore.DialogueSystem
 			Port outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(DialoguePort));
 			outputPort.portName = portName;
 			outputPort.userData = data;
-			outputPort.AddManipulator(new CustomEdgeConnector(Listener));
 			return outputPort;
 		}
 	}

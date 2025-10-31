@@ -14,8 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueName: Test Dialogue
   _defaultSpeaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
-  _nodes: []
+  _nodes:
+  - rid: 5182449813119304222
+  - rid: 5182449813119304223
+  - rid: 5182449813119304224
   _edges: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5182449813119304222
+      type: {class: NodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: d0d34ff2-26ff-4348-a0bb-29c803efed7b
+        position:
+          serializedVersion: 2
+          x: 203.2
+          y: 204
+          width: 109.59999
+          height: 76.80002
+    - rid: 5182449813119304223
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 78b04478-d81c-427b-bb79-6eaaf558801c
+        position:
+          serializedVersion: 2
+          x: 1228.8
+          y: 123.200005
+          width: 302.3999
+          height: 315.19998
+        beat: 
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []
+    - rid: 5182449813119304224
+      type: {class: BeatNodeData, ns: XomracCore.DialogueSystem.SerializedData, asm: XomracCore.DialogueSystem.Runtime}
+      data:
+        guid: 6be9566a-753b-4984-8ff5-da2c57f456c5
+        position:
+          serializedVersion: 2
+          x: 2125.6
+          y: 345.6
+          width: 302.3999
+          height: 315.2
+        beat: 
+        speaker: {fileID: 11400000, guid: 8e6d10bf104e85741b3e4b8f157bbfac, type: 2}
+        choices: []

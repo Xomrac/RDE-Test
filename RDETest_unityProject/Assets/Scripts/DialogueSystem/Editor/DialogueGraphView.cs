@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
-using XomracCore.DialogueSystem.SerializedData;
+﻿using UnityEditor;
 
 namespace XomracCore.DialogueSystem.DialogueSystem
 {
 
+	using System.Collections.Generic;
+	using UnityEngine;
+	using SerializedData;
 	using UnityEngine.UIElements;
 	using UnityEditor.Experimental.GraphView;
 
@@ -13,6 +15,12 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 		public Dialogue CurrentDialogue => _currentDialogue;
 
 		private bool _hasStartNode = false;
+		private bool _isLoading = false;
+		private DialogueContextMenuWindow _contextMenuWindow;
+		public bool saveQueued;
+		public IVisualElementScheduledItem saveScheduler;
+		
+		
 
 		public DialogueGraphView(Dialogue data)
 		{
@@ -20,7 +28,70 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 			style.flexGrow = 1;
 			SetupInteractions();
 			AddGrid();
-			LoadDialogue();
+			_isLoading = true;
+			this.Load();
+			_isLoading = false;
+			TryAddStartNode();
+			graphViewChanged += OnGraphViewChanged;
+		}
+
+		private GraphViewChange OnGraphViewChanged(GraphViewChange changes)
+		{
+			if (_isLoading) return changes;
+			
+			if (changes.elementsToRemove != null && changes.elementsToRemove.Count > 0)
+			{
+				var edgesToAlsoRemove = new HashSet<Edge>();
+				foreach (var el in changes.elementsToRemove)
+				{
+					if (el is Node node)
+					{
+						// input ports
+						for (int i = 0; i < node.inputContainer.childCount; i++)
+						{
+							if (node.inputContainer[i] is Port p)
+							{
+								foreach (var e in p.connections)
+									edgesToAlsoRemove.Add(e);
+							}
+						}
+
+						// output ports
+						for (int i = 0; i < node.outputContainer.childCount; i++)
+						{
+							if (node.outputContainer[i] is Port p)
+							{
+								foreach (var e in p.connections)
+									edgesToAlsoRemove.Add(e);
+							}
+						}
+					}
+				}
+
+				// Aggiunge gli edge mancanti alla rimozione
+				foreach (var edge in edgesToAlsoRemove)
+				{
+					if (!changes.elementsToRemove.Contains(edge))
+						changes.elementsToRemove.Add(edge);
+				}
+			}
+
+			// save automatically when there are changes
+			// edges created, elements removed, or elements moved
+			if (changes.edgesToCreate is {Count: > 0 } ||
+				changes.elementsToRemove is {Count: > 0 } ||
+				changes.movedElements is {Count: > 0 })
+			{
+				EditorApplication.delayCall += () => this.Save();
+			}
+
+			return changes;
+		}
+
+		private void TryAddStartNode()
+		{
+			if (_hasStartNode) return;
+			AddStartNode();
 		}
 
 		// automatically called by Unity to determine which ports can connect when you create/drag a connection
@@ -42,14 +113,16 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 			return compatiblePorts;
 		}
 
-		public void AddBeatNode(Dialogue dialogue)
+		public void AddBeatNode(Dialogue dialogue, Vector2 position)
 		{
 			ANodeDisplayer node = new BeatNodeDisplayer()
 				.WithTitle("New Beat")
 				.WithGuid(System.Guid.NewGuid().ToString())
 				.WithView(this);
+			node.SetPosition(new Rect(position, node.GetPosition().size));
 			(node as BeatNodeDisplayer).WithSpeaker(dialogue.DefaultSpeaker);
 			AddElement(node);
+			this.Save();
 		}
 
 		public void AddBeatNode(BeatNodeData nodeData)
@@ -85,6 +158,7 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 				.WithView(this);
 			AddElement(node);
 			_hasStartNode = true;
+			this.Save();
 		}
 
 		private void SetupInteractions()
@@ -101,17 +175,28 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 			Insert(0, grid);
 			grid.StretchToParentSize();
 		}
-
-		public void SaveDialogue()
+		
+		public void SaveGraph()
 		{
 			this.Save();
 		}
-
-		public void LoadDialogue()
+		
+		public void SetupContextMenu(DialogueGraphWindow parentWindow)
 		{
-			this.Load();
-		}
+			_contextMenuWindow = ScriptableObject.CreateInstance<DialogueContextMenuWindow>();
+			_contextMenuWindow.hideFlags = HideFlags.HideAndDontSave;
+			_contextMenuWindow.Init(this, _currentDialogue,parentWindow);
 
+
+			// open when pressing Space
+			nodeCreationRequest = ctx =>
+			{
+				SearchWindow.Open(new SearchWindowContext(ctx.screenMousePosition), _contextMenuWindow);
+			};
+
+			//TODO: add right click context menu
+			
+		}
 	}
 
 }
