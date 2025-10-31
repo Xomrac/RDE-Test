@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Speaker_Player
   m_EditorClassIdentifier: 
   _name: Player
-  _portrait: {fileID: 6063119140490041567, guid: f76bdd1335b6f644e8d38cdb8db403d4, type: 3}
+  _portrait: {fileID: -9039298740539861442, guid: e785d0f456ec4834d9cc96aaa1015545, type: 3}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Speaker_NPC
   m_EditorClassIdentifier: 
   _name: NPC
-  _portrait: {fileID: -3332227290711281450, guid: 593722040c8f0af40b2c776347c71f16, type: 3}
+  _portrait: {fileID: -2508321389420471057, guid: c6557ad901b21c64fbbd063d45a91010, type: 3}

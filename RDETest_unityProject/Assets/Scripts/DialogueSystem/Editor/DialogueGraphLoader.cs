@@ -53,13 +53,10 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 				}
 				var inputPort = inputNode.inputContainer.Q<Port>();
 
-				Debug.Log(outputPort);
-				Debug.Log(inputPort);
 				if (outputPort == null || inputPort == null) continue;
 
 				Edge edge = outputPort.ConnectTo(inputPort);
 				graph.AddElement(edge);
-				Debug.Log("Added edge from " + outputNode.Guid + " to " + inputNode.Guid);
 			}
 		}
 

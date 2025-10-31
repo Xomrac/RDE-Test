@@ -71,7 +71,7 @@ namespace XomracCore.DialogueSystem
 			
 		protected virtual Port CreateInputPort(string portName = "Input")
 		{
-			var inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(DialoguePort));
+			var inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(DialoguePort));
 			inputPort.portName = portName;
 			return inputPort;
 		}

@@ -1,5 +1,9 @@
 ﻿
 
+using System;
+using UnityEditor;
+using UnityEngine;
+
 namespace XomracCore.DialogueSystem
 {
 
@@ -11,6 +15,9 @@ namespace XomracCore.DialogueSystem
 
 	public class BeatNodeDisplayer : ANodeDisplayer
 	{
+		const float MAX_SPRITE_WIDTH = 256;
+		const float MAX_SPRITE_HEIGHT = 256;
+		private Image _portrait;
 		private TextField _beatField;
 		private ObjectField _speaker;
 		private readonly List<DialogueChoice> _choices = new();
@@ -28,15 +35,65 @@ namespace XomracCore.DialogueSystem
 			mainContainer.style.flexGrow = 1;
 
 			CreateSpeakerField();
+			_portrait = CreatePortraitImage();
+			mainContainer.Insert(0, _portrait);
 			inputContainer.Add(CreateInputPort());
 			titleButtonContainer.Add(CreateAddChoiceButton());
 			extensionContainer.Add(_speaker);
 			mainContainer.Add(CreateBeatField());
 			mainContainer.Add(_beatField);
 
+			UpdatePortrait();
 			UpdateOutputPorts();
 			RefreshExpandedState();
 			RefreshPorts();
+		}
+
+		private Image CreatePortraitImage()
+		{
+			var img = new Image
+			{
+				image = null,
+				scaleMode = ScaleMode.ScaleToFit,
+				style =
+				{
+					alignSelf = Align.Center
+				}
+			};
+			return img;
+		}
+
+		private void UpdatePortrait()
+		{
+			var sprite = GetSpeakerSprite();
+			if (sprite != null)
+			{
+				float spriteWidth = sprite.rect.width;
+				float spriteHeight = sprite.rect.height;
+
+				float scale = Math.Min(MAX_SPRITE_WIDTH / spriteWidth, MAX_SPRITE_HEIGHT / spriteHeight);
+				
+				
+				float ppp = EditorGUIUtility.pixelsPerPoint;
+				float displayWidth = spriteWidth * scale / ppp;
+				float displayHeight = spriteHeight * scale / ppp;
+
+				_portrait.style.width = displayWidth;
+				_portrait.style.height = displayHeight;
+				_portrait.image = sprite.texture;
+				_portrait.visible = true;
+			}
+			else
+			{
+				_portrait.image = null;
+				_portrait.visible = false;
+			}
+		}
+		
+
+		private Sprite GetSpeakerSprite()
+		{
+			return Speaker == null ? null : Speaker.Portrait;
 		}
 
 		private Button CreateAddChoiceButton()
@@ -61,6 +118,7 @@ namespace XomracCore.DialogueSystem
 		public BeatNodeDisplayer WithSpeaker(Speaker newSpeaker)
 		{
 			_speaker.value = newSpeaker;
+			UpdatePortrait();
 			return this;
 		}
 
@@ -103,6 +161,7 @@ namespace XomracCore.DialogueSystem
 				objectType = typeof(Speaker),
 				allowSceneObjects = false
 			};
+			_speaker.RegisterValueChangedCallback(_ => UpdatePortrait());
 		}
 
 		private void AddChoice(string choiceText)

@@ -20,6 +20,7 @@ namespace XomracCore.DialogueSystem.DialogueSystem
 			style.flexGrow = 1;
 			SetupInteractions();
 			AddGrid();
+			LoadDialogue();
 		}
 
 		// automatically called by Unity to determine which ports can connect when you create/drag a connection
