@@ -1,20 +1,16 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 namespace XomracCore.DialogueSystem
 {
 
-	public class BeatPrinter
+	public static class BeatPrinter
 	{
-
 		private static float _printSpeed;
 		private static float _fadeSpeed = 0.05f;
-		private static float? _spedUpSpeed;
-		private static float? _spedUpFadeSpeed;
-
-		private static Coroutine _printingCoroutine;
 
 		public static void SpeedUp(float newSpeed, float newFadeSpeed)
 		{
@@ -23,87 +19,132 @@ namespace XomracCore.DialogueSystem
 			_fadeSpeed = newFadeSpeed;
 		}
 
-		public static void ResetSpeed()
+		public static void PrintBeat(TextMeshProUGUI label, string beat, float timeBetweenWords, MonoBehaviour mono, Action onEnd)
 		{
-			_spedUpSpeed = null;
-		}
+			if (string.IsNullOrEmpty(beat)) return;
 
-		public static void PrintBeat(TextMeshProUGUI label, string beat, float timeBetweenWords, MonoBehaviour mono, Action OnEnd)
-		{
-			if (string.IsNullOrEmpty(label.text)) return;
 			_printSpeed = timeBetweenWords;
+
+			label.text = beat;
 			label.ForceMeshUpdate();
-			string[] words = beat.Split(' ');
-			Debug.Log(words.Length);
-			mono.StartCoroutine(AnimateText(label, words, OnEnd));
+
+			mono.StartCoroutine(AnimateText(label, onEnd));
 		}
 
-		private static IEnumerator AnimateText(TextMeshProUGUI dialogueLabel, string[] words, Action OnEnd)
+		private static IEnumerator AnimateText(TextMeshProUGUI label, Action onEnd)
 		{
-			TMP_TextInfo textInfo = dialogueLabel.textInfo;
-			SetTextAlpha(0, textInfo, dialogueLabel);
-			int currentWordStartingIndex = 0;
-			foreach (string word in words)
+			SetLabelTextAlpha(label, 0);
+
+			List<(int wordStartIndex, int wordLength)> words = FetchWordsToPrint(label.textInfo);
+
+			foreach ((int wordStartIndex, int wordLength) word in words)
 			{
-				(int wordStartingIndex,int wordLength ) wordData = (currentWordStartingIndex,word.Length);
-				float elapsedTime = 0f;
-				float fadeSpeed = _spedUpFadeSpeed ?? _fadeSpeed;
-				while (elapsedTime < fadeSpeed)
+				float elapsed = 0f;
+				while (elapsed < _fadeSpeed)
 				{
-					byte alpha = CalculateAlpha(elapsedTime);
-					SetWordAlpha(wordData, alpha, textInfo, dialogueLabel);
-					elapsedTime += Time.deltaTime;
+					byte alpha = CalculateAlpha(elapsed);
+					
+					(int firstCharIndex, int charCount) = word;
+					ApplyAlphaToWord(label, firstCharIndex, charCount, alpha);
+					
+					label.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+					elapsed += Time.deltaTime;
 					yield return null;
 				}
-				SetWordAlpha(wordData, 255, textInfo, dialogueLabel);
-				currentWordStartingIndex += wordData.wordLength + 1; // +1 for the space
-				float waitTime = _spedUpSpeed ?? _printSpeed;
-				yield return new WaitForSeconds(waitTime);
+				(int wordStartIndex, int wordLength) completeBeat = word;
+				ApplyAlphaToWord(label, completeBeat.wordStartIndex, completeBeat.wordLength, 255);
+				label.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
+
+				yield return new WaitForSeconds(_printSpeed);
 			}
-			RestoreAfterAnimation(textInfo, dialogueLabel, OnEnd);
+
+			RestoreAfterAnimation(label, onEnd);
 		}
 
-		private static void SetWordAlpha((int wordStartingIndex, int wordLength) wordInfo, byte alpha, TMP_TextInfo textInfo, TextMeshProUGUI label)
+		private static List<(int wordStartIndex, int wordLength)> FetchWordsToPrint(TMP_TextInfo textInfo)
 		{
-			for (int wordCharacterIndex = 0; wordCharacterIndex < wordInfo.wordLength; wordCharacterIndex++)
+			var runs = new List<(int wordStartIndex, int wordLength)>();
+			int i = 0;
+			int charCount = textInfo.characterCount;
+
+			while (i < charCount)
 			{
-				int characterIndex = wordInfo.wordStartingIndex + wordCharacterIndex;
-				TMP_CharacterInfo characterInfo = textInfo.characterInfo[characterIndex];
-				SetCharacterAlpha(characterInfo, alpha, textInfo, label);
+				// Skip non printable characters (spaces, newlines, etc.)
+				while (i < charCount && !textInfo.characterInfo[i].isVisible)
+				{
+					i++;
+				}
+				if (i >= charCount) break;
+
+				int start = i;
+				i++;
+
+				// continue while characters are visible (includes adjacent punctuation)
+				while (i < charCount && textInfo.characterInfo[i].isVisible)
+				{
+					i++;
+				}
+				runs.Add((start, i - start));
+			}
+			return runs;
+		}
+
+		private static void ApplyAlphaToWord(TextMeshProUGUI label, int firstCharIndex, int charCount, byte alpha)
+		{
+			TMP_TextInfo textInfo = label.textInfo;
+			for (int i = 0; i < charCount; i++)
+			{
+				int charIndex = firstCharIndex + i;
+				if (charIndex < 0 || charIndex >= textInfo.characterCount) continue;
+
+				TMP_CharacterInfo character = textInfo.characterInfo[charIndex];
+				if (!character.isVisible) continue;
+
+				Color32[] colors = textInfo.meshInfo[character.materialReferenceIndex].colors32;
+				int vertexIndex = character.vertexIndex;
+
+				colors[vertexIndex + 0].a = alpha;
+				colors[vertexIndex + 1].a = alpha;
+				colors[vertexIndex + 2].a = alpha;
+				colors[vertexIndex + 3].a = alpha;
 			}
 		}
 
-		private static void SetCharacterAlpha(TMP_CharacterInfo characterInfo, byte alpha, TMP_TextInfo textInfo, TextMeshProUGUI label)
+		private static void SetLabelTextAlpha(TextMeshProUGUI label, byte alpha)
 		{
-			Color32[] colors = textInfo.meshInfo[characterInfo.materialReferenceIndex].colors32;
-			for (int i = 0; i < 4; i++)
-			{
-				colors[characterInfo.vertexIndex + i].a = alpha;
-			}
-			label.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
-		}
+			label.ForceMeshUpdate();
 
-		private static void SetTextAlpha(byte alpha, TMP_TextInfo textInfo, TextMeshProUGUI label)
-		{
-			foreach (TMP_CharacterInfo characterInfo in textInfo.characterInfo)
+			TMP_TextInfo textInfo = label.textInfo;
+			int count = textInfo.characterCount;
+
+			for (int i = 0; i < count; i++)
 			{
-				SetCharacterAlpha(characterInfo, alpha, textInfo, label);
+				TMP_CharacterInfo character = textInfo.characterInfo[i];
+				if (!character.isVisible) continue;
+
+				Color32[] colors = textInfo.meshInfo[character.materialReferenceIndex].colors32;
+				int vi = character.vertexIndex;
+
+				colors[vi + 0].a = alpha;
+				colors[vi + 1].a = alpha;
+				colors[vi + 2].a = alpha;
+				colors[vi + 3].a = alpha;
 			}
+
 			label.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
 		}
 
 		private static byte CalculateAlpha(float elapsedTime)
 		{
-			float fadeSpeed = _spedUpFadeSpeed ?? _fadeSpeed;
-			float alpha = Mathf.Clamp01(elapsedTime / fadeSpeed);
-			return (byte)(alpha * 255);
+			float t = Mathf.Clamp01(elapsedTime / _fadeSpeed);
+			return (byte)(t * 255);
 		}
 
-		private static void RestoreAfterAnimation(TMP_TextInfo textInfo, TextMeshProUGUI label, Action OnEnd)
+		private static void RestoreAfterAnimation(TextMeshProUGUI label, Action onEnd)
 		{
-			_spedUpSpeed = null;
-			OnEnd?.Invoke();
-			SetTextAlpha(255, textInfo, label);
+			onEnd?.Invoke();
+			SetLabelTextAlpha(label, 255);
+			label.ForceMeshUpdate();
 		}
 	}
 
