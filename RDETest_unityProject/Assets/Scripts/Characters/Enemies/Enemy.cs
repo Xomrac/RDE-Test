@@ -88,6 +88,19 @@ namespace RDETest.Characters.Characters.Enemies
 			_fsm.Transitions.AddTransition(attackState, chaseState, new IsFarFromPlayerCondition(_attackRange, _player.transform, transform));
 
 			_fsm.ChangeState(patrolState);
+			ToggleFSM(false);
+		}
+		
+		public void ToggleFSM(bool isActive)
+		{
+			if (isActive)
+			{
+				_fsm.Resume();
+			}
+			else
+			{
+				_fsm.Pause();
+			}
 		}
 
 		private void Update()
