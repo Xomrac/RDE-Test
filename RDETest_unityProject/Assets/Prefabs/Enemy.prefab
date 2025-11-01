@@ -328,12 +328,12 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.15
   m_Speed: 1
-  m_Acceleration: 8
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 0.65
   m_BaseOffset: 0
@@ -420,7 +420,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -6971237915219296325, guid: 9bfdbe4158be9a04e8974c4240e7de69, type: 3}
-  m_Color: {r: 0.9529685, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.12084627, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -499,6 +499,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3551080864299576485}
     m_Modifications:
+    - target: {fileID: 424822679595243411, guid: 9efcfa5bf04887249bfbd1701b767c6c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1210011681225126333, guid: 9efcfa5bf04887249bfbd1701b767c6c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -525,11 +529,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210011681225126333, guid: 9efcfa5bf04887249bfbd1701b767c6c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1210011681225126333, guid: 9efcfa5bf04887249bfbd1701b767c6c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1210011681225126333, guid: 9efcfa5bf04887249bfbd1701b767c6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -565,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210011681225126333, guid: 9efcfa5bf04887249bfbd1701b767c6c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.751
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1210011681225126333, guid: 9efcfa5bf04887249bfbd1701b767c6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
