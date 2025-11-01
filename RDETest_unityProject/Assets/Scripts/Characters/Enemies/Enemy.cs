@@ -32,8 +32,8 @@ namespace RDETest.Characters.Characters.Enemies
 		private Player _player;
 		private Transform _patrolDestination;
 		public Transform PatrolDestination => _patrolDestination;
-		private Transform[] _lastWaypoints = new Transform[2];
-		private List<Transform> _availableWaypoints = new();
+		private readonly Transform[] _lastWaypoints = new Transform[2];
+		private readonly List<Transform> _availableWaypoints = new();
 
 		private void Start()
 		{
@@ -52,9 +52,9 @@ namespace RDETest.Characters.Characters.Enemies
 		public void SetNewPatrolDestination()
 		{
 			if (_waypoints.Length == 0) return;
-			var randomIndex = UnityEngine.Random.Range(0, _availableWaypoints.Count);
+			int randomIndex = UnityEngine.Random.Range(0, _availableWaypoints.Count);
 			_patrolDestination = _availableWaypoints[randomIndex];
-			var temp = _lastWaypoints[1];
+			Transform temp = _lastWaypoints[1];
 			_lastWaypoints[1] = _lastWaypoints[0];
 			_lastWaypoints[0] = _availableWaypoints[randomIndex];
 			_availableWaypoints.RemoveAt(randomIndex);
@@ -69,7 +69,7 @@ namespace RDETest.Characters.Characters.Enemies
 			var idleState = new IdleState(this);
 			var patrolState = new PatrolState(this);
 			var chaseState = new ChaseState(this, _player);
-			var attackState = new AttackState();
+			var attackState = new AttackState(this);
 			var playerIsVisibleCondition = new PlayerIsVisibleCondition(_detectionRange, _player, transform, _layersToCheck);
 			var isNearPlayerCondition = new IsNearPlayerCondition(_attackRange, _player.transform, transform);
 

@@ -2,6 +2,7 @@
 using RDETest.Characters.Characters.Enemies;
 using UnityEngine;
 using XomracCore.FSM;
+using XomracCore.Patterns.SL;
 
 namespace RDE.Characters.Enemies.FMSStates
 {
@@ -15,12 +16,12 @@ namespace RDE.Characters.Enemies.FMSStates
 		{
 			_enemy = enemy;
 			_player = player;
-			_enemyMover = enemy.GetComponent<EnemyMover>();
+			_enemyMover = ServiceLocator.Of(enemy).GetService<EnemyMover>();
 		}
 
 		public void Enter()
 		{
-			_enemy.ChangeColor(Color.red);
+			_enemy.ChangeColor(Color.orange);
 			_enemyMover.SetTarget(_player.transform);
 		}
 

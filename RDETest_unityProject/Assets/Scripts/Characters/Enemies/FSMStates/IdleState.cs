@@ -1,6 +1,7 @@
 ﻿using RDETest.Characters.Characters.Enemies;
 using UnityEngine;
 using XomracCore.FSM;
+using XomracCore.Patterns.SL;
 
 namespace RDE.Characters.Enemies.FMSStates
 {
@@ -13,12 +14,13 @@ namespace RDE.Characters.Enemies.FMSStates
 		public IdleState(Enemy enemy)
 		{
 			_enemy = enemy;
-			_enemyMover = enemy.GetComponent<EnemyMover>();
+			_enemyMover = ServiceLocator.Of(enemy).GetService<EnemyMover>();
 		}
 
 		public void Enter()
 		{
 			_enemyMover?.Stop();
+			_enemy.ChangeColor(Color.blue);
 		}
 
 		public void Update() { }
