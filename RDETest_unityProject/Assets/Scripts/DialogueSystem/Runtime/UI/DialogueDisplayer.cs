@@ -37,10 +37,12 @@ namespace XomracCore.DialogueSystem
 
         private void ShowBeat(BeatNodeData beat)
         {
+            _continueButton.interactable = false;
             _portrait.sprite = beat.speaker.Portrait;
             _speakerNameLabel.text = beat.speaker.Name;
             _beatLabel.gameObject.SetActive(!string.IsNullOrEmpty(beat.beat));
             _beatLabel.text = beat.beat;
+            BeatPrinter.PrintBeat(_beatLabel, beat.beat,.1f,this, () => { _continueButton.interactable = true;});
             ShowChoices(beat);
         }
 
